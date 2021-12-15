@@ -1,9 +1,9 @@
 class Bicep < Formula
   desc "Bicep: next generation template language for Azure Resource Manager (ARM)"
   homepage "https://github.com/Azure/bicep"
-  version "0.4.1008"
-  url "https://github.com/Azure/bicep/releases/download/v0.4.1008/bicep-osx-x64"
-  sha256 "c0872a6356787c29c2f95f67d5b9dfcfe07d95f8249f3fbd8bbee2a223e3024f"
+  version "0.4.1124"
+  url "https://github.com/Azure/bicep/releases/download/v0.4.1124/bicep-osx-x64"
+  sha256 "a888e484270abb1b61d8219338aa29d74585c11d3bf45e14c0c86c0c7a76cf14"
 
   license "MIT"
 
