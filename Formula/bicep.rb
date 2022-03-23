@@ -4,7 +4,7 @@ class Bicep < Formula
     SHA = "d832e827224759f6eaf20019ef322832e16666ccb2b6cc8f1840a807cc527e49"
   elsif RUBY_PLATFORM =~ /x86_64-linux/
     EXECUTABLE = "bicep-linux-x64"
-    SHA = ""
+    SHA = "bd52f832cdff1d8fc6f4febcdc1c262640c7fa49f07bbb1a53ed6a7ea3b31ef7"
   end
 
   VERSION = "0.4.1272"
