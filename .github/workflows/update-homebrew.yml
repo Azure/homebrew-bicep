@@ -25,12 +25,20 @@ jobs:
             
             return data.tag_name.substring(1);
             
-      - name: Get SHA256 checksum
-        id: get_release_sha256
+      - name: Get SHA256 checksum for x64
+        id: get_release_sha256_x64
         run: |
           set -euxo pipefail
 
           result=$(curl -Lf https://github.com/Azure/bicep/releases/download/v${{ steps.get_release_version.outputs.result }}/bicep-osx-x64 | sha256sum | awk '{print $1}')
+          echo "::set-output name=result::$result"
+
+      - name: Get SHA256 checksum for arm64
+        id: get_release_sha256_arm64
+        run: |
+          set -euxo pipefail
+
+          result=$(curl -Lf https://github.com/Azure/bicep/releases/download/v${{ steps.get_release_version.outputs.result }}/bicep-osx-arm64 | sha256sum | awk '{print $1}')
           echo "::set-output name=result::$result"
 
       - name: Update the Homebrew formula
@@ -38,7 +46,8 @@ jobs:
           set -euxo pipefail
 
           export release_version="${{ steps.get_release_version.outputs.result }}"
-          export release_sha256="${{ steps.get_release_sha256.outputs.result }}"
+          export release_sha256_x64="${{ steps.get_release_sha256_x64.outputs.result }}"
+          export release_sha256_arm64="${{ steps.get_release_sha256_arm64.outputs.result }}"
           envsubst < ./.github/workflows/bicep.rb.tpl > ./Formula/bicep.rb
 
       - name: Create Pull Request
