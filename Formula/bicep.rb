@@ -2,6 +2,7 @@ class Bicep < Formula
   desc "Bicep: next generation template language for Azure Resource Manager (ARM)"
   homepage "https://github.com/Azure/bicep"
   version "0.16.2"
+  depends_on :macos
 
   case
   when OS.mac? && Hardware::CPU.intel?
