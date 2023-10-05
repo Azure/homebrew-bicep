@@ -7,6 +7,9 @@ jobs:
   update-homebrew:
     runs-on: ubuntu-latest
 
+    permissions:
+      contents: write
+
     steps:
       - uses: actions/checkout@v2
         
@@ -50,14 +53,11 @@ jobs:
           export release_sha256_arm64="${{ steps.get_release_sha256_arm64.outputs.result }}"
           envsubst < ./.github/workflows/bicep.rb.tpl > ./Formula/bicep.rb
 
-      - name: Create Pull Request
-        uses: peter-evans/create-pull-request@v3
+      - name: Update update-homebrew branch
+        uses: stefanzweifel/git-auto-commit-action@v4
         with:
-          commit-message: Update Homebrew to v${{ steps.get_release_version.outputs.result }}
-          committer: GitHub <noreply@github.com>
-          author: ${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>
-          signoff: false
+          commit_message: Update Homebrew to v${{ steps.get_release_version.outputs.result }}
           branch: update-homebrew
-          delete-branch: true
-          title: Update Homebrew to v${{ steps.get_release_version.outputs.result }}
-          draft: false
+      
+      - name: Shortcut for PR creation
+        run: echo "Use this link to create a PR -> https://github.com/Azure/homebrew-bicep/compare/main...update-homebrew"
