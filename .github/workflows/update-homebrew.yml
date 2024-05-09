@@ -54,7 +54,7 @@ jobs:
           envsubst < ./.github/workflows/bicep.rb.tpl > ./Formula/bicep.rb
 
       - name: Update update-homebrew branch
-        uses: stefanzweifel/git-auto-commit-action@v4
+        uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: Update Homebrew to v${{ steps.get_release_version.outputs.result }}
           branch: update-homebrew
