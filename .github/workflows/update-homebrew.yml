@@ -34,7 +34,7 @@ jobs:
           set -euxo pipefail
 
           result=$(curl -Lf https://github.com/Azure/bicep/releases/download/v${{ steps.get_release_version.outputs.result }}/bicep-osx-x64 | sha256sum | awk '{print $1}')
-          echo "::set-output name=result::$result"
+          echo "result=$result" >> $GITHUB_OUTPUT
 
       - name: Get SHA256 checksum for arm64
         id: get_release_sha256_arm64
@@ -42,7 +42,7 @@ jobs:
           set -euxo pipefail
 
           result=$(curl -Lf https://github.com/Azure/bicep/releases/download/v${{ steps.get_release_version.outputs.result }}/bicep-osx-arm64 | sha256sum | awk '{print $1}')
-          echo "::set-output name=result::$result"
+          echo "result=$result" >> $GITHUB_OUTPUT
 
       - name: Update the Homebrew formula
         run: |
