@@ -1,15 +1,15 @@
 class Bicep < Formula
   desc "Bicep: next generation template language for Azure Resource Manager (ARM)"
   homepage "https://github.com/Azure/bicep"
-  version "0.32.4"
+  version "0.33.13"
 
   case
   when OS.mac? && Hardware::CPU.intel?
-    url "https://github.com/Azure/bicep/releases/download/v0.32.4/bicep-osx-x64"
-    sha256 "8dd981819fbbd395cf66c8b7849d39a017152d337b61f2ebeb015b67bc8eb494"
+    url "https://github.com/Azure/bicep/releases/download/v0.33.13/bicep-osx-x64"
+    sha256 "9ee97ab3974d01c93295a43bd8a5b9d05081efb9fba5b99004dee68e5b480c8b"
   when OS.mac? && Hardware::CPU.arm?
-    url "https://github.com/Azure/bicep/releases/download/v0.32.4/bicep-osx-arm64"
-    sha256 "babb6a5e7e97b884da2ff083e15599a0bd45076bc69201dba9001a2334ecdc62"
+    url "https://github.com/Azure/bicep/releases/download/v0.33.13/bicep-osx-arm64"
+    sha256 "5c40c9a9a063ab91ed5f1cfb9ec9c84f1d5a278ec5de3756471a9478a3009087"
   else
     odie "Unexpected platform!"
   end
