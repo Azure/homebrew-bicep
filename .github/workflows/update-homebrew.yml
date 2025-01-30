@@ -58,6 +58,7 @@ jobs:
         with:
           commit_message: Update Homebrew to v${{ steps.get_release_version.outputs.result }}
           branch: update-homebrew
+          create_branch: true
       
       - name: Shortcut for PR creation
         run: echo "Use this link to create a PR -> https://github.com/Azure/homebrew-bicep/compare/main...update-homebrew"
