@@ -11,10 +11,10 @@ jobs:
       contents: write
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@0717577d45739eb3c851188b29f50ed6c0b2194e # v2.8.0
         
       - name: Get Release Version
-        uses: actions/github-script@v3
+        uses: actions/github-script@ffc2c79a5b2490bd33e0a41c1de74b877714d736 # v3.2.0
         id: get_release_version
         with:
           github-token: ${{secrets.GITHUB_TOKEN}}
@@ -54,7 +54,7 @@ jobs:
           envsubst < ./.github/workflows/bicep.rb.tpl > ./Formula/bicep.rb
 
       - name: Update update-homebrew branch
-        uses: stefanzweifel/git-auto-commit-action@v4
+        uses: stefanzweifel/git-auto-commit-action@3ea6ae190baf489ba007f7c92608f33ce20ef04a # v4.16.0
         with:
           commit_message: Update Homebrew to v${{ steps.get_release_version.outputs.result }}
           branch: update-homebrew
